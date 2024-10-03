@@ -1,0 +1,16 @@
+[package]
+name = "memos-cli"
+version = "0.1.0"
+edition = "2021"
+description.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+keywords.workspace = true
+
+[[bin]]
+name = "memo"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5.19", features = ["derive"] }

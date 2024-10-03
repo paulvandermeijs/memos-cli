@@ -1,0 +1,11 @@
+[workspace]
+members = ["crates/*"]
+default-members = ["crates/memos-cli"]
+resolver = "2"
+
+[workspace.package]
+description = "A command-line tool for Memos."
+license = "MIT" 
+authors = ["Paul van der Meijs"]
+repository = "https://github.com/paulvandermeijs/memos-cli"
+keywords = ["cli", "memos"]
