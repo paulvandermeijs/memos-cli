@@ -13,6 +13,7 @@ struct Cli {
 #[derive(Subcommand, Debug)]
 enum Commands {
     Login { host: Option<String> },
+    List,
 }
 
 fn main() {
@@ -21,6 +22,7 @@ fn main() {
 
     let result = match cli.command {
         Some(Commands::Login { host }) => commands::login::login(auth, host),
+        Some(Commands::List) => commands::list::list(&auth),
         None => panic!("Not implemented"),
     };
 
