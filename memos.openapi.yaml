@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
-  title: api/v1/activity_service.proto
-  version: version not set
+  title: Memos API
+  version: 1.0.0
 tags:
   - name: ActivityService
   - name: UserService
@@ -575,7 +575,7 @@ paths:
           format: int32
       tags:
         - WebhookService
-  /api/v1/webhooks/{webhook.id}:
+  /api/v1/webhooks/{webhook_id}:
     patch:
       summary: UpdateWebhook updates a webhook.
       operationId: WebhookService_UpdateWebhook
@@ -589,7 +589,7 @@ paths:
           schema:
             $ref: '#/definitions/googlerpcStatus'
       parameters:
-        - name: webhook.id
+        - name: webhook_id
           in: path
           required: true
           type: integer
@@ -656,7 +656,7 @@ paths:
           pattern: settings/[^/]+
       tags:
         - WorkspaceSettingService
-  /api/v1/workspace/{setting.name}:
+  /api/v1/workspace/{setting_name}:
     patch:
       summary: SetWorkspaceSetting updates the setting.
       operationId: WorkspaceSettingService_SetWorkspaceSetting
@@ -670,7 +670,7 @@ paths:
           schema:
             $ref: '#/definitions/googlerpcStatus'
       parameters:
-        - name: setting.name
+        - name: setting_name
           description: |-
             name is the name of the setting.
             Format: settings/{setting}
@@ -694,7 +694,7 @@ paths:
             title: setting is the setting to update.
       tags:
         - WorkspaceSettingService
-  /api/v1/{identityProvider.name}:
+  /api/v1/{identityProvider_name}:
     patch:
       summary: UpdateIdentityProvider updates an identity provider.
       operationId: IdentityProviderService_UpdateIdentityProvider
@@ -708,7 +708,7 @@ paths:
           schema:
             $ref: '#/definitions/googlerpcStatus'
       parameters:
-        - name: identityProvider.name
+        - name: identityProvider_name
           description: |-
             The name of the identityProvider.
             Format: identityProviders/{id}
@@ -734,7 +734,7 @@ paths:
             title: The identityProvider to update.
       tags:
         - IdentityProviderService
-  /api/v1/{inbox.name}:
+  /api/v1/{inbox_name}:
     patch:
       summary: UpdateInbox updates an inbox.
       operationId: InboxService_UpdateInbox
@@ -748,7 +748,7 @@ paths:
           schema:
             $ref: '#/definitions/googlerpcStatus'
       parameters:
-        - name: inbox.name
+        - name: inbox_name
           description: |-
             The name of the inbox.
             Format: inboxes/{id}
@@ -780,7 +780,7 @@ paths:
                 format: int32
       tags:
         - InboxService
-  /api/v1/{memo.name}:
+  /api/v1/{memo_name}:
     patch:
       summary: UpdateMemo updates a memo.
       operationId: MemoService_UpdateMemo
@@ -794,7 +794,7 @@ paths:
           schema:
             $ref: '#/definitions/googlerpcStatus'
       parameters:
-        - name: memo.name
+        - name: memo_name
           description: |-
             The name of the memo.
             Format: memos/{id}
@@ -1580,7 +1580,7 @@ paths:
             $ref: '#/definitions/MemoServiceRenameMemoTagBody'
       tags:
         - MemoService
-  /api/v1/{resource.name}:
+  /api/v1/{resource_name}:
     patch:
       summary: UpdateResource updates a resource.
       operationId: ResourceService_UpdateResource
@@ -1594,7 +1594,7 @@ paths:
           schema:
             $ref: '#/definitions/googlerpcStatus'
       parameters:
-        - name: resource.name
+        - name: resource_name
           description: |-
             The name of the resource.
             Format: resources/{id}
@@ -1635,7 +1635,7 @@ paths:
                   Format: memos/{id}
       tags:
         - ResourceService
-  /api/v1/{setting.name}:
+  /api/v1/{setting_name}:
     patch:
       summary: UpdateUserSetting updates the setting of a user.
       operationId: UserService_UpdateUserSetting
@@ -1649,7 +1649,7 @@ paths:
           schema:
             $ref: '#/definitions/googlerpcStatus'
       parameters:
-        - name: setting.name
+        - name: setting_name
           description: |-
             The name of the user.
             Format: users/{id}
@@ -1674,7 +1674,7 @@ paths:
                 description: The default visibility of the memo.
       tags:
         - UserService
-  /api/v1/{user.name}:
+  /api/v1/{user_name}:
     patch:
       summary: UpdateUser updates a user.
       operationId: UserService_UpdateUser
@@ -1688,7 +1688,7 @@ paths:
           schema:
             $ref: '#/definitions/googlerpcStatus'
       parameters:
-        - name: user.name
+        - name: user_name
           description: |-
             The name of the user.
             Format: users/{id}
