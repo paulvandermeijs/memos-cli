@@ -81,6 +81,8 @@ pub enum V1NodeType {
     Spoiler,
     #[serde(rename = "HTML_ELEMENT")]
     HtmlElement,
+    #[serde(rename = "TASK_LIST")]
+    TaskList,
 
 }
 
@@ -120,6 +122,7 @@ impl std::fmt::Display for V1NodeType {
             Self::ReferencedContent => write!(f, "REFERENCED_CONTENT"),
             Self::Spoiler => write!(f, "SPOILER"),
             Self::HtmlElement => write!(f, "HTML_ELEMENT"),
+            Self::TaskList => write!(f, "TASK_LIST"),
         }
     }
 }

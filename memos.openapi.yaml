@@ -2854,6 +2854,7 @@ definitions:
       - REFERENCED_CONTENT
       - SPOILER
       - HTML_ELEMENT
+      - TASK_LIST
     default: NODE_UNSPECIFIED
     description: |2-
        - LINE_BREAK: Block nodes.
