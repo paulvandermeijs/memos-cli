@@ -1,5 +1,7 @@
 mod auth;
 mod commands;
+mod editor;
+mod io;
 
 use clap::{Parser, Subcommand};
 
