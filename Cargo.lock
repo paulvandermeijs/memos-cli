@@ -784,6 +784,7 @@ dependencies = [
  "inquire",
  "memos-api",
  "serde",
+ "tempfile",
  "toml",
  "url",
 ]

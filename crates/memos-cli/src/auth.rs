@@ -1,6 +1,7 @@
 use std::fs;
 
 use anyhow::{Error, Result};
+use memos_api::apis::configuration::Configuration;
 use serde::{Deserialize, Serialize};
 use url::Url;
 
@@ -56,6 +57,26 @@ impl Auth {
         self.token = token;
 
         self
+    }
+}
+
+impl Into<Configuration> for &Auth {
+    fn into(self) -> Configuration {
+        let base_path = self
+            .get_url()
+            .clone()
+            .unwrap()
+            .to_string()
+            .trim_end_matches('/')
+            .to_string();
+        let bearer_access_token = Some(self.get_token().clone().unwrap());
+        let configuration = Configuration {
+            base_path,
+            bearer_access_token,
+            ..Default::default()
+        };
+
+        configuration
     }
 }
 
