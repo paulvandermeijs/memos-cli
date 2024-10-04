@@ -33,6 +33,8 @@ pub enum V1NodeType {
     List,
     #[serde(rename = "ORDERED_LIST_ITEM")]
     OrderedListItem,
+    #[serde(rename = "UNORDERED_LIST")]
+    UnorderedList,
     #[serde(rename = "UNORDERED_LIST_ITEM")]
     UnorderedListItem,
     #[serde(rename = "TASK_LIST_ITEM")]
@@ -94,6 +96,7 @@ impl std::fmt::Display for V1NodeType {
             Self::Blockquote => write!(f, "BLOCKQUOTE"),
             Self::List => write!(f, "LIST"),
             Self::OrderedListItem => write!(f, "ORDERED_LIST_ITEM"),
+            Self::UnorderedList => write!(f, "UNORDERED_LIST"),
             Self::UnorderedListItem => write!(f, "UNORDERED_LIST_ITEM"),
             Self::TaskListItem => write!(f, "TASK_LIST_ITEM"),
             Self::MathBlock => write!(f, "MATH_BLOCK"),

@@ -13,6 +13,7 @@
 | Blockquote | BLOCKQUOTE |
 | List | LIST |
 | OrderedListItem | ORDERED_LIST_ITEM |
+| UnorderedList | UNORDERED_LIST |
 | UnorderedListItem | UNORDERED_LIST_ITEM |
 | TaskListItem | TASK_LIST_ITEM |
 | MathBlock | MATH_BLOCK |

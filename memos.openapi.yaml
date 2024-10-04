@@ -2830,6 +2830,7 @@ definitions:
       - BLOCKQUOTE
       - LIST
       - ORDERED_LIST_ITEM
+      - UNORDERED_LIST
       - UNORDERED_LIST_ITEM
       - TASK_LIST_ITEM
       - MATH_BLOCK
