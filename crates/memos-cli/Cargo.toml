@@ -16,6 +16,7 @@ path = "src/main.rs"
 anyhow = "1.0.89"
 clap = { version = "4.5.19", features = ["derive"] }
 inquire = "0.7.5"
+memos-api = { path = "../memos-api" }
 serde = { version = "1.0.210", features = ["derive"] }
 toml = "0.8.19"
 url = { version = "2.5.2", features = ["serde"] }

@@ -1,0 +1,11 @@
+{
+  "packageName": "memos-api",
+  "packageVersion": "0.1.0",
+  "supportAsync": false,
+  "supportingFiles": "",
+  "apis": "",
+  "apiDocs": false,
+  "modelDocs": false,
+  "apiTests": false,
+  "modelTests": false
+}
