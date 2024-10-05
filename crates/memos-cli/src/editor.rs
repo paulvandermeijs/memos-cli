@@ -1,9 +1,9 @@
-use anyhow::Result;
+use anyhow::{Error, Result};
 use std::{io::Write, process::Command};
 
 pub(crate) fn get_content_from_editor(input: Option<String>) -> Result<String> {
     let Ok(editor_command) = get_editor_command() else {
-        return Err(anyhow::Error::msg("No editor configured"));
+        return Err(Error::msg("No editor configured."));
     };
     let mut tmpfile = tempfile::NamedTempFile::new()?;
 
@@ -17,12 +17,12 @@ pub(crate) fn get_content_from_editor(input: Option<String>) -> Result<String> {
         .arg(path)
         .spawn()
         .or_else(|_| {
-            Err(anyhow::Error::msg(format!(
-                "Failed to run editor command {editor_command}"
+            Err(Error::msg(format!(
+                "Failed to run editor command {editor_command}."
             )))
         })?
         .wait()
-        .or_else(|_| Err(anyhow::Error::msg("".to_string())))?;
+        .or_else(|_| Err(Error::msg("Editor command returned a non-zero status.")))?;
 
     let content = std::fs::read_to_string(path)?;
 

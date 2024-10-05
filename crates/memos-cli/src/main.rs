@@ -39,8 +39,8 @@ fn main() {
 
     let result = match cli.command {
         Some(Commands::Login { host }) => commands::login::login(auth, host),
-        Some(Commands::List) => commands::list::list(&auth),
-        None => commands::create::create(&auth, cli.no_edit, cli.workspace, cli.public),
+        Some(Commands::List) => commands::list::list(auth),
+        None => commands::create::create(auth, cli.no_edit, cli.workspace, cli.public),
     };
 
     let code = match result {

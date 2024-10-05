@@ -4,6 +4,7 @@ default-members = ["crates/memos-cli"]
 resolver = "2"
 
 [workspace.package]
+version = "0.1.0"
 description = "A command-line tool for Memos."
 license = "MIT" 
 authors = ["Paul van der Meijs"]

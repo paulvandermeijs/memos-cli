@@ -5,14 +5,14 @@ use memos_api::apis::configuration::Configuration;
 use serde::{Deserialize, Serialize};
 use url::Url;
 
-#[derive(Default, Deserialize, Serialize)]
+#[derive(Clone, Default, Deserialize, Serialize)]
 pub(crate) struct Auth {
     url: Option<Url>,
     token: Option<String>,
 }
 
 impl Auth {
-    pub fn read() -> Auth {
+    pub fn read() -> Self {
         let auth_data = std::fs::read_to_string(auth_path());
 
         if let Err(_) = auth_data {
@@ -37,20 +37,13 @@ impl Auth {
             fs::create_dir_all(auth_path_dir)?;
         }
 
-        std::fs::write(&auth_path, auth_data).map_err(|_| Error::msg("Couldn't write auth"))
-    }
-
-    pub(crate) fn get_url(&self) -> &Option<Url> {
-        &self.url
+        std::fs::write(&auth_path, auth_data).map_err(|_| Error::msg("Couldn't write auth."))
     }
 
     pub(crate) fn set_url(mut self, url: Option<Url>) -> Self {
         self.url = url;
 
         self
-    }
-    pub(crate) fn get_token(&self) -> &Option<String> {
-        &self.token
     }
 
     pub(crate) fn set_token(mut self, token: Option<String>) -> Self {
@@ -60,23 +53,28 @@ impl Auth {
     }
 }
 
-impl Into<Configuration> for &Auth {
-    fn into(self) -> Configuration {
-        let base_path = self
-            .get_url()
-            .clone()
-            .unwrap()
-            .to_string()
-            .trim_end_matches('/')
-            .to_string();
-        let bearer_access_token = Some(self.get_token().clone().unwrap());
+impl TryInto<Configuration> for Auth {
+    type Error = anyhow::Error;
+
+    fn try_into(self) -> std::prelude::v1::Result<Configuration, Self::Error> {
+        let Some(url) = self.url else {
+            return Err(Error::msg("Missing server URL. Login using `memo login`."));
+        };
+        let Some(token) = self.token else {
+            return Err(Error::msg(
+                "Missing access token. Login using `memo login`.",
+            ));
+        };
+
+        let base_path = url.to_string().trim_end_matches('/').to_string();
+        let bearer_access_token = Some(token);
         let configuration = Configuration {
             base_path,
             bearer_access_token,
             ..Default::default()
         };
 
-        configuration
+        Ok(configuration)
     }
 }
 

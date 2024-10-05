@@ -1,13 +1,21 @@
-use anyhow::Result;
+use anyhow::{Error, Result};
+use inquire::validator::Validation;
 use inquire::{required, Password, Text};
+use memos_api::apis::auth_service_api::auth_service_get_auth_status;
 use url::Url;
 
 use crate::auth::Auth;
 
 pub fn login(auth: Auth, url: Option<String>) -> Result<()> {
+    let url_validator = |input: &str| match url::Url::parse(input) {
+        Ok(_) => Ok(Validation::Valid),
+        Err(_) => Ok(Validation::Invalid("Provide a valid URL".into())),
+    };
     let url = url.unwrap_or_else(|| {
         Text::new("Server URL:")
+            .with_help_message("Provide the URL to your server")
             .with_validator(required!())
+            .with_validator(url_validator)
             .prompt()
             .unwrap()
     });
@@ -17,15 +25,20 @@ pub fn login(auth: Auth, url: Option<String>) -> Result<()> {
 
     token_url.set_path("/setting");
 
-    println!("Create an access token at {token_url}");
-
     let token = Password::new("Access token:")
         .without_confirmation()
+        .with_help_message(&format!("Create an access token at {token_url}"))
         .with_validator(required!())
         .prompt()
         .unwrap();
 
-    auth.set_url(Some(url)).set_token(Some(token)).write()?;
+    let auth = auth.set_url(Some(url)).set_token(Some(token));
+
+    if let Err(_) = auth_service_get_auth_status(&auth.clone().try_into()?) {
+        return Err(Error::msg("Failed to validate credentials."));
+    }
+
+    auth.write()?;
 
     println!("Successfully logged in!");
 

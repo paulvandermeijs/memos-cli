@@ -1,9 +1,10 @@
 [package]
 name = "memos-cli"
-version = "0.1.0"
 edition = "2021"
+version.workspace = true
 description.workspace = true
 license.workspace = true
+readme.workspace = true
 authors.workspace = true
 repository.workspace = true
 keywords.workspace = true
