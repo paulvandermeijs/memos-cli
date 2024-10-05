@@ -5,7 +5,7 @@ pub(crate) fn get_content_from_editor(input: Option<String>) -> Result<String> {
     let Ok(editor_command) = get_editor_command() else {
         return Err(Error::msg("No editor configured."));
     };
-    let mut tmpfile = tempfile::NamedTempFile::new()?;
+    let mut tmpfile = tempfile::NamedTempFile::with_suffix(".md")?;
 
     if let Some(input) = input {
         tmpfile.write_all(input.as_bytes())?;

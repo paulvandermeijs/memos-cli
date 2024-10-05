@@ -2,6 +2,12 @@
 
 An overview of changes for each version.
 
+## [0.2.2] - 2024-10-06
+
+### Changed
+
+- Set file extension `.md` for temp file to enable editor support.
+
 ## [0.2.1] - 2024-10-05
 
 ### Fixed
