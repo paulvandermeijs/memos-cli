@@ -26,7 +26,7 @@ pub(crate) fn create(auth: Auth, no_edit: bool, workspace: bool, public: bool) -
     } else if public {
         V1Visibility::Public
     } else {
-        V1Visibility::Protected
+        V1Visibility::Private
     };
     let visibility = Some(visibility);
     let body = V1CreateMemoRequest {

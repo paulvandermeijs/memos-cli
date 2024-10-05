@@ -2,6 +2,12 @@
 
 An overview of changes for each version.
 
+## [0.2.1] - 2024-10-05
+
+### Fixed
+
+- Fixed visibility.
+
 ## [0.2.0] - 2024-10-05
 
 ### Added
