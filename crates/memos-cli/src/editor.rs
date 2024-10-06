@@ -1,4 +1,5 @@
 use anyhow::{Error, Result};
+use std::collections::VecDeque;
 use std::{io::Write, process::Command};
 
 pub(crate) fn get_content_from_editor(input: Option<String>) -> Result<String> {
@@ -12,8 +13,17 @@ pub(crate) fn get_content_from_editor(input: Option<String>) -> Result<String> {
     }
 
     let path = tmpfile.path();
+    let mut args = editor_command.split(' ').collect::<VecDeque<&str>>();
+    let Some(editor_command) = args.pop_front() else {
+        return Err(Error::msg("No editor configured."));
+    };
+    let mut command = Command::new(&editor_command);
 
-    Command::new(&editor_command)
+    for arg in args.into_iter() {
+        command.arg(arg);
+    }
+
+    command
         .arg(path)
         .spawn()
         .or_else(|_| {

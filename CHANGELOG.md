@@ -2,6 +2,12 @@
 
 An overview of changes for each version.
 
+## [0.2.3] - 2024-10-06
+
+### Fixed
+
+- Allow arguments in editor command.
+
 ## [0.2.2] - 2024-10-06
 
 ### Changed

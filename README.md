@@ -86,8 +86,7 @@ memo list
 
 - When using Visual Studio Code as `VISUAL` it needs to wait for the file to be
   closed before returning. To make this happen you need to add the `--wait`
-  option to the `code` command. The `memo` command, however, is not yet able to
-  process additional options in the editor command.
+  option to the `code` command.
 - The application uses an API client generated from the API specification. This
   may in some cases result in memos not being displayed due to missing
   definitions in the specification.
