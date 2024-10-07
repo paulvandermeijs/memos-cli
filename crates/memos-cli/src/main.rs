@@ -30,6 +30,7 @@ enum Commands {
     /// Login to your server
     Login { host: Option<String> },
     /// List memos
+    #[command(visible_alias = "ls")]
     List,
 }
 
