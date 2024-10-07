@@ -6,7 +6,7 @@ use url::Url;
 
 use crate::auth::Auth;
 
-pub fn login(auth: Auth, url: Option<String>) -> Result<()> {
+pub(crate) fn login(auth: Auth, url: Option<String>) -> Result<()> {
     let url_validator = |input: &str| match Url::parse(input) {
         Ok(_) => Ok(Validation::Valid),
         Err(_) => Ok(Validation::Invalid("Provide a valid URL.".into())),
