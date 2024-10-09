@@ -1,10 +1,18 @@
 use anyhow::Result;
-use memos_api::apis::memo_service_api::memo_service_list_memos;
+use memos_api::apis::{
+    auth_service_api::auth_service_get_auth_status, memo_service_api::memo_service_list_memos,
+};
 
 use crate::auth::Auth;
 
 pub(crate) fn list(auth: Auth) -> Result<()> {
-    let result = memo_service_list_memos(&auth.try_into()?, None, None, None)?;
+    let configuration = auth.try_into()?;
+    let auth_status = auth_service_get_auth_status(&configuration)?;
+    let filter = format!(
+        "creator == '{}' && row_status == 'NORMAL'",
+        auth_status.name.unwrap()
+    );
+    let result = memo_service_list_memos(&configuration, None, None, Some(&filter))?;
     let output = result
         .memos
         .unwrap()
