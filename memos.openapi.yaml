@@ -2829,6 +2829,7 @@ definitions:
       - HORIZONTAL_RULE
       - BLOCKQUOTE
       - LIST
+      - ORDERED_LIST
       - ORDERED_LIST_ITEM
       - UNORDERED_LIST
       - UNORDERED_LIST_ITEM

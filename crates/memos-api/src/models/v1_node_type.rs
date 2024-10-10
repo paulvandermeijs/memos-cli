@@ -31,6 +31,8 @@ pub enum V1NodeType {
     Blockquote,
     #[serde(rename = "LIST")]
     List,
+    #[serde(rename = "ORDERED_LIST")]
+    OrderedList,
     #[serde(rename = "ORDERED_LIST_ITEM")]
     OrderedListItem,
     #[serde(rename = "UNORDERED_LIST")]
@@ -97,6 +99,7 @@ impl std::fmt::Display for V1NodeType {
             Self::HorizontalRule => write!(f, "HORIZONTAL_RULE"),
             Self::Blockquote => write!(f, "BLOCKQUOTE"),
             Self::List => write!(f, "LIST"),
+            Self::OrderedList => write!(f, "ORDERED_LIST"),
             Self::OrderedListItem => write!(f, "ORDERED_LIST_ITEM"),
             Self::UnorderedList => write!(f, "UNORDERED_LIST"),
             Self::UnorderedListItem => write!(f, "UNORDERED_LIST_ITEM"),

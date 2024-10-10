@@ -12,6 +12,7 @@
 | HorizontalRule | HORIZONTAL_RULE |
 | Blockquote | BLOCKQUOTE |
 | List | LIST |
+| OrderedList | ORDERED_LIST |
 | OrderedListItem | ORDERED_LIST_ITEM |
 | UnorderedList | UNORDERED_LIST |
 | UnorderedListItem | UNORDERED_LIST_ITEM |
