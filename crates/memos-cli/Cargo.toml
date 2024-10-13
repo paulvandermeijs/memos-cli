@@ -1,6 +1,6 @@
 [package]
 name = "memos-cli"
-version = "0.2.4"
+version = "0.3.0"
 edition = "2021"
 description.workspace = true
 license.workspace = true
@@ -17,8 +17,8 @@ path = "src/main.rs"
 anyhow = "1.0.89"
 clap = { version = "4.5.19", features = ["derive"] }
 inquire = "0.7.5"
-memos-api = { version = "0.1.0", path = "../memos-api" }
-memos-cli-ui = { version = "0.1.0", path = "../memos-cli-ui" }
+memos-api = { version = "0.3.0", path = "../memos-api" }
+memos-cli-ui = { version = "0.3.0", path = "../memos-cli-ui" }
 serde = { version = "1.0.210", features = ["derive"] }
 tempfile = "3.13.0"
 toml = "0.8.19"
