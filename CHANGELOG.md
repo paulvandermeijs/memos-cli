@@ -2,6 +2,12 @@
 
 An overview of changes for each version.
 
+## [0.3.0] - 2024-10-13
+
+### Added
+
+- Basic list UI.
+
 ## [0.2.4] - 2024-10-10
 
 ### Fixed
