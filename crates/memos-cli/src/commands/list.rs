@@ -2,6 +2,7 @@ use anyhow::Result;
 use memos_api::apis::{
     auth_service_api::auth_service_get_auth_status, memo_service_api::memo_service_list_memos,
 };
+use memos_cli_ui::list::ListView;
 
 use crate::auth::Auth;
 
@@ -13,15 +14,10 @@ pub(crate) fn list(auth: Auth) -> Result<()> {
         auth_status.name.unwrap()
     );
     let result = memo_service_list_memos(&configuration, None, None, Some(&filter))?;
-    let output = result
-        .memos
-        .unwrap()
-        .into_iter()
-        .map(|memo| memo.content.unwrap())
-        .collect::<Vec<String>>()
-        .join("\n\n---\n\n");
+    let memos = &result.memos.unwrap();
+    let list_view = ListView::try_new(memos)?;
 
-    println!("{output}");
+    list_view.draw()?;
 
     Ok(())
 }

@@ -1,0 +1,15 @@
+[package]
+name = "memos-cli-ui"
+version = "0.1.0"
+edition = "2021"
+description.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+keywords.workspace = true
+
+[dependencies]
+anyhow = "1.0.89"
+crossterm = "0.28.1"
+memos-api = { version = "0.1.0", path = "../memos-api" }
+ratatui = "0.28.1"

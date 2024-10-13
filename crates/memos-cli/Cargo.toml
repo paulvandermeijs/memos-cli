@@ -18,6 +18,7 @@ anyhow = "1.0.89"
 clap = { version = "4.5.19", features = ["derive"] }
 inquire = "0.7.5"
 memos-api = { version = "0.1.0", path = "../memos-api" }
+memos-cli-ui = { version = "0.1.0", path = "../memos-cli-ui" }
 serde = { version = "1.0.210", features = ["derive"] }
 tempfile = "3.13.0"
 toml = "0.8.19"
