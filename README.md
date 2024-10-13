@@ -82,6 +82,8 @@ To display a list of all your memos use the following command:
 memo list
 ```
 
+Use `j` and `k` to navigate down and up the list. Press `q` to exit the list.
+
 ## Known issues
 
 - When using Visual Studio Code as `VISUAL` it needs to wait for the file to be
