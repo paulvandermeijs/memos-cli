@@ -32,10 +32,16 @@ struct Cli {
 #[derive(Subcommand, Debug)]
 enum Commands {
     /// Login to your server
-    Login { host: Option<String> },
+    Login {
+        /// The address of your Memos server
+        host: Option<String>,
+    },
     /// List memos
     #[command(visible_alias = "ls")]
-    List,
+    List {
+        /// A search string to filter memos
+        search: Option<String>,
+    },
 }
 
 fn main() {
@@ -48,7 +54,7 @@ fn main() {
 
     let result = match cli.command {
         Some(Commands::Login { host }) => commands::login::login(auth, host),
-        Some(Commands::List) => commands::list::list(auth),
+        Some(Commands::List { search }) => commands::list::list(auth, search),
         None => commands::create::create(auth, cli.no_edit, cli.workspace, cli.public),
     };
 

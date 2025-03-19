@@ -7,13 +7,17 @@ use memos_cli_ui::list::ListView;
 
 use crate::auth::Auth;
 
-pub(crate) fn list(auth: Auth) -> Result<()> {
+pub(crate) fn list(auth: Auth, search: Option<String>) -> Result<()> {
     let configuration = auth.try_into()?;
     let auth_status = auth_service_get_auth_status(&configuration)?;
     let filter = format!(
         "creator == '{}' && row_status == 'NORMAL'",
         auth_status.name.unwrap()
     );
+    let filter = match search {
+        Some(search) => format!("{filter} && content_search == [{search:?}]"),
+        None => filter,
+    };
 
     info!("Using filter {filter:?}");
 

@@ -79,10 +79,12 @@ memo --no-edit
 To display a list of all your memos use the following command:
 
 ```bash
-memo list
+memo list [SEARCH]
 ```
 
 Use `j` and `k` to navigate down and up the list. Press `q` to exit the list.
+
+You can optionally provide a search string for `SEARCH` to filter memos.
 
 ## Known issues
 
