@@ -1,4 +1,5 @@
 use anyhow::{Error, Result};
+use log::info;
 use std::collections::VecDeque;
 use std::{io::Write, process::Command};
 
@@ -13,6 +14,9 @@ pub(crate) fn get_content_from_editor(input: Option<String>) -> Result<String> {
     }
 
     let path = tmpfile.path();
+
+    info!("Using temp file {path:?}");
+
     let mut args = editor_command.split(' ').collect::<VecDeque<&str>>();
     let Some(editor_command) = args.pop_front() else {
         return Err(Error::msg("No editor configured."));
